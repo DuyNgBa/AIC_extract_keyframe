@@ -198,12 +198,14 @@ def _save_result_compact(result, output_dir: str, video_id: str) -> Dict:
             "feature_mode": kf.feature_mode,
         }
         if kf.image is not None:
-            img_name = f"kf_{i:04d}_shot{kf.shot_id}_t{kf.timestamp:.2f}.jpg"
+            ts_ms = int(round(kf.timestamp * 1000))
+            img_name = f"{video_id}_{ts_ms}.jpg"
             cv2.imwrite(
                 os.path.join(video_out_dir, img_name), kf.image,
                 [cv2.IMWRITE_JPEG_QUALITY, 90],
             )
             entry["image_file"] = img_name
+            
         keyframe_meta.append(entry)
 
     meta = {
