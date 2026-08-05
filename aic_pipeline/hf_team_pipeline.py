@@ -200,7 +200,7 @@ def _save_result_compact(result, output_dir: str, video_id: str) -> Dict:
         }
         if kf.image is not None:
             ts_ms = int(round(kf.timestamp * 1000))
-            img_name = f"{video_id}_{ts_ms}.jpg"
+            img_name = f"{video_id}_{ts_ms:08d}.jpg"
             cv2.imwrite(
                 os.path.join(video_out_dir, img_name), kf.image,
                 [cv2.IMWRITE_JPEG_QUALITY, 90],
