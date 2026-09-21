@@ -97,7 +97,7 @@ def _parse_video_code(filename: str) -> Optional[str]:
     """Trích mã đầy đủ 'L26_V001' từ tên file (thay vì chỉ 'L26')."""
     basename = os.path.basename(filename)
     m = _PREFIX_PATTERN.match(basename)
-    return f"{m.group(1).upper()}_V{m.group(2)}" if m else None
+    return f"{m.group(1).upper()}-V{m.group(2)}" if m else None
 
 
 def _normalize_range_bound(code: str, is_end: bool) -> str:
@@ -107,8 +107,8 @@ def _normalize_range_bound(code: str, is_end: bool) -> str:
       - "L26_V001"     -> mốc chính xác tới từng video
     """
     code = code.upper().strip()
-    if "_V" not in code:
-        code = code + ("_V999" if is_end else "_V000")
+    if "-V" not in code:
+        code = code + ("-V999" if is_end else "-V000")
     return code
 
 def list_videos_by_prefix_range(
