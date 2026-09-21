@@ -73,7 +73,7 @@ VIDEO_EXTENSIONS = (".mp4", ".mkv", ".avi", ".mov", ".webm")
 
 # Khớp đúng pattern K{2 chữ số}_V{3 chữ số} — ví dụ K01_V001.mp4, K23_V007.mp4
 # Khớp pattern {1 chữ cái}{2 chữ số}_V{3 chữ số} — ví dụ K01_V001.mp4, L21_V001.mp4
-_PREFIX_PATTERN = re.compile(r"^([A-Z]\d{2})_V(\d{3})", re.IGNORECASE)
+_PREFIX_PATTERN = re.compile(r"^([A-Z]\d{2})-V(\d{3})", re.IGNORECASE)
 
 
 def _check_hf_hub_available():
